@@ -24,22 +24,13 @@
 </body>
 
     <script>
-document.getElementById("rsvpForm").addEventListener("submit", async function(e){
-  e.preventDefault();
-
-  const data = {
+fetch("https://script.google.com/macros/s/AKfycbzSAxW8gjPAuk_TEnn8EC0S8BW-_2rhKA7EsxKDOZ6z7a6I53WoOmfY4EPcbE-eaiCCFQ/exec", {
+  method: "POST",
+  body: JSON.stringify({
     name: this.name.value,
     attendance: this.attendance.value,
     guests: this.guests.value
-  };
-
-  await fetch("https://script.google.com/macros/s/AKfycbzSAxW8gjPAuk_TEnn8EC0S8BW-_2rhKA7EsxKDOZ6z7a6I53WoOmfY4EPcbE-eaiCCFQ/exec", {
-    method: "POST",
-    body: JSON.stringify(data)
-  });
-
-  document.getElementById("msg").innerText = "RSVP berjaya 🎉";
-  this.reset();
+  })
 });
 </script>
 </html>
