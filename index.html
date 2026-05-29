@@ -24,36 +24,24 @@
 </body>
 
 <script>
-document.getElementById("rsvpForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const form = e.target;
-
-  const data = {
+fetch("https://script.google.com/macros/s/AKfycbzSAxW8gjPAuk_TEnn8EC0S8BW-_2rhKA7EsxKDOZ6z7a6I53WoOmfY4EPcbE-eaiCCFQ/exec", {
+  method: "POST",
+  body: new URLSearchParams({
     name: form.name.value,
     attendance: form.attendance.value,
     guests: form.guests.value
-  };
-
-  fetch("https://script.google.com/macros/s/AKfycbzSAxW8gjPAuk_TEnn8EC0S8BW-_2rhKA7EsxKDOZ6z7a6I53WoOmfY4EPcbE-eaiCCFQ/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
   })
-  .then(res => res.text())
-  .then(response => {
-    document.getElementById("msg").innerHTML =
-      "💌 RSVP berjaya dihantar! Terima kasih 💍";
-    form.reset();
-  })
-  .catch(error => {
-    document.getElementById("msg").innerHTML =
-      "❌ Error hantar RSVP. Cuba lagi.";
-    console.error(error);
-  });
-
+})
+.then(res => res.text())
+.then(response => {
+  document.getElementById("msg").innerHTML =
+    "💌 RSVP berjaya dihantar! Terima kasih 💍";
+  form.reset();
+})
+.catch(error => {
+  document.getElementById("msg").innerHTML =
+    "❌ Error hantar RSVP. Cuba lagi.";
+  console.error(error);
 });
 </script>
 </html>
