@@ -2,6 +2,25 @@
 <html>
 <head>
   <title>Wedding RSVP</title>
+    <script>
+document.getElementById("rsvpForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const data = {
+    name: this.name.value,
+    attendance: this.attendance.value,
+    guests: this.guests.value
+  };
+
+  await fetch("PASTE_YOUR_SCRIPT_URL_HERE", {
+    method: "POST",
+    body: JSON.stringify(data)
+  });
+
+  document.getElementById("msg").innerText = "RSVP berjaya 🎉";
+  this.reset();
+});
+</script>
 </head>
 <body>
 
