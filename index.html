@@ -26,12 +26,13 @@
 <script>
 fetch("https://script.google.com/macros/s/AKfycbzSAxW8gjPAuk_TEnn8EC0S8BW-_2rhKA7EsxKDOZ6z7a6I53WoOmfY4EPcbE-eaiCCFQ/exec", {
   method: "POST",
+  mode: "no-cors",
   body: new URLSearchParams({
     name: form.name.value,
     attendance: form.attendance.value,
     guests: form.guests.value
   })
-})
+});
 .then(res => res.text())
 .then(response => {
   document.getElementById("msg").innerHTML =
